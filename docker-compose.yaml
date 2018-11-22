@@ -19,8 +19,8 @@ services:
     volumes:
       - ./app:/app
       - ~/.m2:/root/.m2
-    expose:
-      - "8081"
+    ports:
+      - 8081:8081
     command: mvn clean spring-boot:run
     depends_on:
       - mongodb
