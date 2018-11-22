@@ -2,7 +2,7 @@
 version: '2'
 services:
   mongodb:
-    container_name: payments-api-mongo
+    container_name: payments-mongo
     image: mongo:3.6
     environment:
       - MONGO_DATA_DIR=/data/db
@@ -20,7 +20,7 @@ services:
       - ./app:/app
       - ~/.m2:/root/.m2
     expose:
-      - "8080"
+      - "8081"
     command: mvn clean spring-boot:run
     depends_on:
       - mongodb
