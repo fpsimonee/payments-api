@@ -3,14 +3,16 @@ version: '2'
 services:
   mongodb:
     container_name: payments-mongo
-    image: mongo:3.6
+    image: mongo:3.6.0
     environment:
       - MONGO_DATA_DIR=/data/db
       - MONGO_LOG_DIR=/dev/null
-      - MONGODB_DATABASE=payments
+      - MONGO_INITDB_DATABASE=payments
     ports:
         - 27018:27017
     command: mongod --smallfiles --logpath=/dev/null # --quiet
+    volumes:
+      - ./deployments:/deployments
 
   app:
     restart: always
