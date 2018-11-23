@@ -1,10 +1,4 @@
-com/payments/model/CardWrapper.class
-com/payments/model/Payment.class
-com/payments/PaymentsApiApplication.class
-com/payments/model/PaymentWrapper.class
 com/payments/model/Payments.class
-com/payments/model/Buyer.class
-com/payments/model/Card.class
-com/payments/model/BuyerWrapper.class
 com/payments/controller/PaymentsController.class
 com/payments/model/PaymentsWrapper.class
+com/payments/PaymentsApiApplication.class

@@ -1,4 +1,4 @@
-package com.payments.model;
+package com.payments.domain;
 
 public class PaymentsWrapper {
 
