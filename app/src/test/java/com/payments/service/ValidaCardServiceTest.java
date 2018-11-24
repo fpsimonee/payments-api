@@ -2,8 +2,6 @@ package com.payments.service;
 
 import com.payments.domain.Payments;
 import com.payments.exceptions.CardNumberException;
-import com.sun.xml.internal.ws.policy.spi.AssertionCreationException;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
