@@ -1,1 +1,3 @@
-FROM maven:3.5-jdk-8
+FROM openjdk:8
+COPY target/*.jar app.jar
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
