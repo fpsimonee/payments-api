@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.print.Doc;
+
 @RestController
 @RequestMapping("/api/v1")
 
@@ -39,6 +41,7 @@ public class PaymentsController{
                     logger.info("Call Validate Credit Card");
                     ValidaCardService.validCC(cardNumber);
                 }
+
                 CreditCardResponse newResponse = new CreditCardResponse();
 
                 newResponse.setStatus("ok");
