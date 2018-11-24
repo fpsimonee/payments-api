@@ -1,0 +1,8 @@
+{
+  "error": {
+    "statusCode": "400 BAD_REQUEST",
+    "statusMessage": "Ticket Invalid",
+    "exception": "class com.payments.exceptions.TicketLengthException",
+    "message": "Ticket length is less then 40 characters"
+  }
+}

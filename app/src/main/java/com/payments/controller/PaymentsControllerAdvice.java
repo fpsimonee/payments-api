@@ -3,6 +3,8 @@ package com.payments.controller;
 import com.payments.domain.ErrorWrapper;
 import com.payments.domain.Error;
 import com.payments.exceptions.CardNumberException;
+import com.payments.exceptions.CvvFormatException;
+import com.payments.exceptions.TicketLengthException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -35,5 +37,31 @@ public class PaymentsControllerAdvice extends ResponseEntityExceptionHandler {
         logger.error("Error on validate card number");
 
         return error(errorWrapper, HttpStatus.BAD_REQUEST);
+    }
+
+    @ResponseBody
+    @ExceptionHandler(TicketLengthException.class)
+    public ResponseEntity<ErrorWrapper> response(final TicketLengthException e){
+        Error errorWrapper = new Error();
+        errorWrapper.setStatusCode(HttpStatus.BAD_REQUEST.toString());
+        errorWrapper.setStatusMessage("Ticket Invalid");
+        errorWrapper.setException(e.getClass().toString());
+        errorWrapper.setMessage("Ticket length is less then 40 characters");
+        logger.error("Ticket length is less then 40 characters");
+
+        return error(errorWrapper, HttpStatus.NOT_ACCEPTABLE);
+    }
+
+    @ResponseBody
+    @ExceptionHandler(CvvFormatException.class)
+    public ResponseEntity<ErrorWrapper> response(final CvvFormatException e){
+        Error errorWrapper = new Error();
+        errorWrapper.setStatusCode(HttpStatus.BAD_REQUEST.toString());
+        errorWrapper.setStatusMessage("Payment not Acceptable");
+        errorWrapper.setException(e.getClass().toString());
+        errorWrapper.setMessage("CVV is null");
+        logger.error("CVV is null or short that 3");
+
+        return error(errorWrapper, HttpStatus.NOT_ACCEPTABLE);
     }
 }

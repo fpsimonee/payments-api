@@ -9,6 +9,7 @@ public class Payments {
     private String cpf;
     private String amount;
     private String type;
+    private String ticketNumber;
     private String cardName;
     private String cardNumber;
     private String expirationDate;
@@ -16,6 +17,14 @@ public class Payments {
 
     public Payments(){
         super();
+    }
+
+    public String getTicketNumber() {
+        return ticketNumber;
+    }
+
+    public void setTicketNumber(String boletoNumber) {
+        this.ticketNumber = boletoNumber;
     }
 
     public String getClientId() {

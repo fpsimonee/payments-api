@@ -5,9 +5,9 @@
     "email": "fpsimonee@gmail",
     "cpf": "41882189833",
     "amount": "500",
-    "type": "Boleto",
+    "type": "creditCard",
     "cardName": "Felipe Paiva Simone",
-    "cardNumber": "378282246310",
+    "cardNumber": "37800000",
     "expirationDate": "03/2021",
     "cvv": "455"
   }

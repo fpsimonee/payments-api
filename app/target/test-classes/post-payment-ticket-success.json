@@ -1,0 +1,11 @@
+{
+  "payment":{
+    "clientId": "123456",
+    "name": "Felipe P Simone",
+    "email": "fpsimonee@gmail",
+    "cpf": "41882189833",
+    "amount": "500",
+    "type": "boleto",
+    "ticketNumber": "00190000090302122300751456275174877360000123471"
+  }
+}
