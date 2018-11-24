@@ -1,13 +1,7 @@
 package com.payments.domain;
 
-
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-@Document(collection = "payments")
 public class Payments {
 
-    @Indexed(unique = true)
     private String clientId;
 
     private String name;
