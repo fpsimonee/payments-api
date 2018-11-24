@@ -25,4 +25,4 @@
 /.nb-gradle/
 
 ##dir 
-app/target
+/target
