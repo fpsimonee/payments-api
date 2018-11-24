@@ -1,0 +1,7 @@
+{
+  "paymentStatus": {
+    "id": "123456",
+    "status": "Processing",
+    "name": "Felipe Simone"
+  }
+}

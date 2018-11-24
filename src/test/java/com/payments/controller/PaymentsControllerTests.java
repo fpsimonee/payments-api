@@ -123,4 +123,18 @@ public class PaymentsControllerTests extends PaymentsApiApplicationTests {
                         .contentType(MediaType.APPLICATION_JSON).content(request))
                 .andExpect(content().json(response)).andExpect(status().isNotAcceptable());
     }
+
+    @Test
+    public void testGETPaymentsControllerGETStatus() throws Exception {
+        final InputStream inputResponse = this.getClass().getClassLoader()
+                .getResourceAsStream("get-status-response.json");
+
+        final String response =IOUtils.toString(inputResponse, "UTF-8");
+
+        this.mockMvc
+                .perform(MockMvcRequestBuilders.get("/api/v1/payments/1/status")
+                        .contentType(MediaType.APPLICATION_JSON))
+                        .andExpect(content().json(response)).andExpect(status().isOk());
+    }
+
 }
