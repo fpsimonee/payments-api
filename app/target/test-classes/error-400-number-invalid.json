@@ -1,8 +1,0 @@
-{
-  "error": {
-    "statusCode": "400 BAD_REQUEST",
-    "statusMessage": "Bad Request",
-    "exception": "class com.payments.exceptions.CardNumberException",
-    "message": "Card number is invalid, please check this"
-  }
-}
