@@ -82,7 +82,9 @@ public class PaymentsController{
     }
 
     @RequestMapping(value = "/payments/{id}/status", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
-    public ResponseEntity<PaymentStatusWrapper> getStatus(){
+    public ResponseEntity<PaymentStatusWrapper> getStatus(@PathVariable(value="id") String id){
+
+        logger.info("Payment requested is "+ id);
 
         PaymentStatus paymentStatus = new PaymentStatus();
         paymentStatus.setId("123456");
