@@ -4,6 +4,7 @@ import com.payments.domain.ErrorWrapper;
 import com.payments.domain.Error;
 import com.payments.exceptions.CardNumberException;
 import com.payments.exceptions.CvvFormatException;
+import com.payments.exceptions.PaymentNotPermittedException;
 import com.payments.exceptions.TicketLengthException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,20 +31,20 @@ public class PaymentsControllerAdvice extends ResponseEntityExceptionHandler {
     @ExceptionHandler(CardNumberException.class)
     public ResponseEntity<ErrorWrapper> response(final CardNumberException e){
         Error errorWrapper = new Error();
-        errorWrapper.setStatusCode(HttpStatus.BAD_REQUEST.toString());
+        errorWrapper.setStatusCode(HttpStatus.NOT_ACCEPTABLE.toString());
         errorWrapper.setStatusMessage("Bad Request");
         errorWrapper.setException(e.getClass().toString());
         errorWrapper.setMessage("Card number is invalid, please check this");
         logger.error("Error on validate card number");
 
-        return error(errorWrapper, HttpStatus.BAD_REQUEST);
+        return error(errorWrapper, HttpStatus.NOT_ACCEPTABLE);
     }
 
     @ResponseBody
     @ExceptionHandler(TicketLengthException.class)
     public ResponseEntity<ErrorWrapper> response(final TicketLengthException e){
         Error errorWrapper = new Error();
-        errorWrapper.setStatusCode(HttpStatus.BAD_REQUEST.toString());
+        errorWrapper.setStatusCode(HttpStatus.NOT_ACCEPTABLE.toString());
         errorWrapper.setStatusMessage("Ticket Invalid");
         errorWrapper.setException(e.getClass().toString());
         errorWrapper.setMessage("Ticket length is less then 40 characters");
@@ -53,10 +54,23 @@ public class PaymentsControllerAdvice extends ResponseEntityExceptionHandler {
     }
 
     @ResponseBody
+    @ExceptionHandler(PaymentNotPermittedException.class)
+    public ResponseEntity<ErrorWrapper> response(final PaymentNotPermittedException e){
+        Error errorWrapper = new Error();
+        errorWrapper.setStatusCode(HttpStatus.NOT_ACCEPTABLE.toString());
+        errorWrapper.setStatusMessage("Payment not Permitted");
+        errorWrapper.setException(e.getClass().toString());
+        errorWrapper.setMessage("type of Payment not Permitted");
+        logger.error("type of Payment not Permitted");
+
+        return error(errorWrapper, HttpStatus.NOT_ACCEPTABLE);
+    }
+
+    @ResponseBody
     @ExceptionHandler(CvvFormatException.class)
     public ResponseEntity<ErrorWrapper> response(final CvvFormatException e){
         Error errorWrapper = new Error();
-        errorWrapper.setStatusCode(HttpStatus.BAD_REQUEST.toString());
+        errorWrapper.setStatusCode(HttpStatus.NOT_ACCEPTABLE.toString());
         errorWrapper.setStatusMessage("Payment not Acceptable");
         errorWrapper.setException(e.getClass().toString());
         errorWrapper.setMessage("CVV is null");

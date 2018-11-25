@@ -86,7 +86,7 @@ public class PaymentsControllerTests extends PaymentsApiApplicationTests {
             this.mockMvc
                     .perform(MockMvcRequestBuilders.post("/api/v1/payments")
                             .contentType(MediaType.APPLICATION_JSON).content(request))
-                    .andExpect(content().json(response)).andExpect(status().isBadRequest());
+                    .andExpect(content().json(response)).andExpect(status().isNotAcceptable());
         } catch (Exception e) {
             e.printStackTrace();
         }

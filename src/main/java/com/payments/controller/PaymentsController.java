@@ -3,6 +3,7 @@ package com.payments.controller;
 import com.payments.domain.*;
 import com.payments.exceptions.CardNumberException;
 import com.payments.exceptions.CvvFormatException;
+import com.payments.exceptions.PaymentNotPermittedException;
 import com.payments.exceptions.TicketLengthException;
 import com.payments.service.ParserService;
 import com.payments.service.ValidaCardService;
@@ -20,7 +21,7 @@ public class PaymentsController{
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @RequestMapping(value="/payments", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
-    public ResponseEntity<Object> response(@RequestBody PaymentsWrapper request) throws CardNumberException, CvvFormatException, TicketLengthException {
+    public ResponseEntity<Object> response(@RequestBody PaymentsWrapper request) throws CardNumberException, CvvFormatException, TicketLengthException, PaymentNotPermittedException {
 
         Payments pay = ParserService.toObject(request);
         String cardNumber = pay.getCardNumber();
@@ -52,21 +53,26 @@ public class PaymentsController{
                 return new ResponseEntity<>(response, HttpStatus.CREATED);
 
             }else{
-                TicketResponse newResponse = new TicketResponse();
+                if(pay.getType().equals("ticket")){
+                    TicketResponse newResponse = new TicketResponse();
 
-                if(pay.getTicketNumber().length() != 47){
-                    logger.error("Length is: "+pay.getTicketNumber().length());
-                    throw new TicketLengthException("Lenght is diferent 44");
+                    if(pay.getTicketNumber().length() != 47){
+                        logger.error("Length is: "+pay.getTicketNumber().length());
+                        throw new TicketLengthException("Lenght is diferent 44");
+                    }else{
+                        logger.info("Ticket number is: "+pay.getTicketNumber());
+
+                        newResponse.setTicketNumber(pay.getTicketNumber());
+
+                        TicketResponseWrapper response = new TicketResponseWrapper();
+                        response.setTicketResponse(newResponse);
+
+                        logger.info("Payment Add");
+                        return new ResponseEntity<>(response, HttpStatus.CREATED);
+                    }
                 }else{
-                    logger.info("Ticket number is: "+pay.getTicketNumber());
-
-                    newResponse.setTicketNumber(pay.getTicketNumber());
-
-                    TicketResponseWrapper response = new TicketResponseWrapper();
-                    response.setTicketResponse(newResponse);
-
-                    logger.info("Payment Add");
-                    return new ResponseEntity<>(response, HttpStatus.CREATED);
+                    logger.error("Payment not Permitted");
+                    throw new PaymentNotPermittedException("Payment Not Permitted");
                 }
 
             }
