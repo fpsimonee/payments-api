@@ -25,4 +25,5 @@
 /.nb-gradle/
 
 ##dir 
-/target
+app/target
+data
