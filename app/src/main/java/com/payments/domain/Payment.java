@@ -1,9 +1,9 @@
 package com.payments.domain;
 
-public class Payments {
+public class Payment {
 
+    private int code;
     private String clientId;
-
     private String name;
     private String email;
     private String cpf;
@@ -14,9 +14,18 @@ public class Payments {
     private String cardNumber;
     private String expirationDate;
     private String cvv;
+    private String status;
 
-    public Payments(){
+    public Payment() {
         super();
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
     }
 
     public String getTicketNumber() {
@@ -105,5 +114,13 @@ public class Payments {
 
     public void setCvv(String cvv) {
         this.cvv = cvv;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

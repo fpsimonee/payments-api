@@ -1,16 +1,15 @@
 package com.payments.service;
 
-import com.payments.domain.Payments;
+import com.payments.domain.Payment;
 import com.payments.domain.PaymentsWrapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ParserService {
 
 
-    public static Payments toObject(PaymentsWrapper payments){
-        Payments novo = new Payments();
+    public static Payment toObject(PaymentsWrapper payments){
+        Payment novo = new Payment();
 
         novo.setClientId(payments.getPayment().getClientId());
         novo.setCpf(payments.getPayment().getCpf());

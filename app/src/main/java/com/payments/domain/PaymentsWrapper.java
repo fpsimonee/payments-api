@@ -2,18 +2,20 @@ package com.payments.domain;
 
 import org.springframework.data.annotation.Id;
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "payments")
 public class PaymentsWrapper {
 
     @Id
     public ObjectId _id;
-    private Payments payment;
+    private Payment payment;
 
-    public Payments getPayment() {
+    public Payment getPayment() {
         return payment;
     }
 
-    public void setPayment(Payments payment) {
+    public void setPayment(Payment payment) {
         this.payment = payment;
     }
 

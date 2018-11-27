@@ -1,12 +1,11 @@
 package com.payments.service;
 
-import com.payments.domain.Payments;
+import com.payments.domain.Payment;
 import com.payments.exceptions.CardNumberException;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
-import org.springframework.test.util.AssertionErrors;
 
 import static org.junit.Assert.*;
 
@@ -25,7 +24,7 @@ public class ValidaCardServiceTest {
     @Test
     public void validCard() throws Exception {
         //GIVEN
-        Payments payments = new Payments();
+        Payment payments = new Payment();
         payments.setCardNumber("378282246310005");
 
 
@@ -39,7 +38,7 @@ public class ValidaCardServiceTest {
     @Test(expected = CardNumberException.class)
     public void indvalidCard() throws CardNumberException {
         //GIVEN
-        Payments payments = new Payments();
+        Payment payments = new Payment();
         payments.setCardNumber("37828224631");
 
 
@@ -48,5 +47,6 @@ public class ValidaCardServiceTest {
 
         //THEN
         assertNull(result);
+//    }
     }
 }
