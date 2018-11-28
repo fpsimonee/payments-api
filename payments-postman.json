@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "6ac38025-5203-43f1-9faa-635dc0fe85d0",
+		"name": "payments-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Payment - Creditc Card Success",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"payment\":{\n\t\t\"code\":1,\n\t\t\"clientId\": \"123456\",\n\t\t\"name\": \"Felipe P Simone\",\n\t\t\"email\": \"fpsimonee@gmail\",\n\t\t\"cpf\": \"41882189833\",\n\t\t\"amount\": \"500\",\n\t\t\"type\": \"creditCard\",\n\t\t\"cardName\": \"Felipe Paiva Simone\",\n\t\t\"cardNumber\": \"4024007163349300\",\n\t\t\"expirationDate\": \"03/2021\",\n\t\t\"cvv\": \"005\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/payments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"payments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreatePayment - without CVV ",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"payment\":{\n\t\t\"clientId\": \"123456\",\n\t\t\"name\": \"Felipe P Simone\",\n\t\t\"email\": \"fpsimonee@gmail\",\n\t\t\"cpf\": \"41882189833\",\n\t\t\"amount\": \"500\",\n\t\t\"type\": \"creditCard\",\n\t\t\"cardName\": \"Felipe Paiva Simone\",\n\t\t\"cardNumber\": \"4389359680495473\",\n\t\t\"expirationDate\": \"03/2021\",\n\t\t\"cvv\": \"\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/payments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"payments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Payment - Ticket Invalid",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"payment\":{\n    \"clientId\": \"123456\",\n    \"name\": \"Felipe P Simone\",\n    \"email\": \"fpsimonee@gmail\",\n    \"cpf\": \"41882189833\",\n    \"amount\": \"500\",\n    \"type\": \"ticket\",\n    \"ticketNumber\": \"123456789\"\n  }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/payments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"payments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Payment - Credit Card Invalid",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"payment\":{\n\t\t\"clientId\": \"123456\",\n\t\t\"name\": \"Felipe P Simone\",\n\t\t\"email\": \"fpsimonee@gmail\",\n\t\t\"cpf\": \"41882189833\",\n\t\t\"amount\": \"500\",\n\t\t\"type\": \"creditCard\",\n\t\t\"cardName\": \"Felipe Paiva Simone\",\n\t\t\"cardNumber\": \"12345\",\n\t\t\"expirationDate\": \"03/2021\",\n\t\t\"cvv\": \"005\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/payments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"payments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Payment - Ticket Valid",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"payment\":{\n    \"clientId\": \"123456\",\n    \"name\": \"Felipe P Simone\",\n    \"email\": \"fpsimonee@gmail\",\n    \"cpf\": \"41882189833\",\n    \"amount\": \"500\",\n    \"type\": \"ticket\",\n    \"ticketNumber\": \"00190000090302122300751456275174877360000123471\"\n  }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/payments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"payments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Status for Payment",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"payment\":{\n    \"clientId\": \"123456\",\n    \"name\": \"Felipe P Simone\",\n    \"email\": \"fpsimonee@gmail\",\n    \"cpf\": \"41882189833\",\n    \"amount\": \"500\",\n    \"type\": \"boleto\",\n    \"ticketNumber\": \"00190000090302122300751456275174877360000123471\"\n  }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/payments/123456/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"payments",
+						"123456",
+						"status"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
