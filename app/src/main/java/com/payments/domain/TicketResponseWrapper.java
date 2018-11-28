@@ -2,13 +2,13 @@ package com.payments.domain;
 
 public class TicketResponseWrapper {
 
-    private TicketResponse ticketResponse;
+    private TicketResponse payment;
 
     public TicketResponse getTicketResponse() {
-        return ticketResponse;
+        return payment;
     }
 
     public void setTicketResponse(TicketResponse ticketResponse) {
-        this.ticketResponse = ticketResponse;
+        this.payment = ticketResponse;
     }
 }

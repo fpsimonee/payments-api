@@ -1,6 +1,6 @@
 {
   "creditCardResponse": {
-    "status": "ok",
+    "status": "Processing",
     "creditCard": "4024007163349300"
   }
 }

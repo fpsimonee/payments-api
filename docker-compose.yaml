@@ -1,19 +1,18 @@
 version: '2'
 services:
+
   mongodb:
-    container_name: payments-mongo
     image: mongo:3.6.3
+    container_name: payments-mongo
     environment:
       - MONGO_DATA_DIR=./data/db
       - MONGO_LOG_DIR=/dev/null
       - MONGODB_DATABASE=payments
-    volumes:
-      - ./data/db:/data/db
     ports: 
-      - 27018:27017
-    command: mongod --smallfiles --logpath=/dev/null # --quiet
+      - "27017:27017"
 
   app:
+    container_name: payments-app
     restart: always
     build: ./app
     working_dir: /app
@@ -21,7 +20,9 @@ services:
       - ./app:/app
       - ~/.m2:/root/.m2
     ports:
-      - 8081:8081
-    command: mvn clean spring-boot:run
+      - "8081:8081"
+    links:
+      - mongodb:mongodb
     depends_on:
       - mongodb
+    command: mvn clean spring-boot:run

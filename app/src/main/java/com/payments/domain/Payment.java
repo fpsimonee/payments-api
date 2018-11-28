@@ -1,7 +1,12 @@
 package com.payments.domain;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "payment")
 public class Payment {
 
+    private ObjectId _id;
     private int code;
     private String clientId;
     private String name;
@@ -18,6 +23,11 @@ public class Payment {
 
     public Payment() {
         super();
+    }
+
+
+    public void set_id(ObjectId _id) {
+        this._id = _id;
     }
 
     public int getCode() {

@@ -8,6 +8,7 @@ import com.payments.exceptions.PaymentNotPermittedException;
 import com.payments.exceptions.TicketLengthException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -77,5 +78,18 @@ public class PaymentsControllerAdvice extends ResponseEntityExceptionHandler {
         logger.error("CVV is null or short that 3");
 
         return error(errorWrapper, HttpStatus.NOT_ACCEPTABLE);
+    }
+
+    @ResponseBody
+    @ExceptionHandler(ChangeSetPersister.NotFoundException.class)
+    public ResponseEntity<ErrorWrapper> response(final ChangeSetPersister.NotFoundException e){
+        Error errorWrapper = new Error();
+        errorWrapper.setStatusCode(HttpStatus.NOT_FOUND.toString());
+        errorWrapper.setStatusMessage("Payment not found");
+        errorWrapper.setException(e.getClass().toString());
+        errorWrapper.setMessage("Payment not found in database");
+        logger.error("Payment not found in database");
+
+        return error(errorWrapper, HttpStatus.NOT_FOUND);
     }
 }

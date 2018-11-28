@@ -1,6 +1,6 @@
 {
   "error": {
-    "statusCode": "406 NOT_ACCEPTABLE",
+    "statusCode": "406",
     "statusMessage": "Payment not Acceptable",
     "exception": "class com.payments.exceptions.CvvFormatException",
     "message": "CVV is null"

@@ -2,13 +2,13 @@ package com.payments.domain;
 
 public class CreditCardResponseWrapper {
 
-    private CreditCardResponse creditCardResponse;
+    private CreditCardResponse payment;
 
     public CreditCardResponse getCreditCardResponse() {
-        return creditCardResponse;
+        return payment;
     }
 
     public void setCreditCardResponse(CreditCardResponse creditCardResponse) {
-        this.creditCardResponse = creditCardResponse;
+        this.payment = creditCardResponse;
     }
 }

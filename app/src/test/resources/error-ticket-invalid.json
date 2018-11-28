@@ -1,6 +1,6 @@
 {
   "error": {
-    "statusCode": "406 NOT_ACCEPTABLE",
+    "statusCode": "406",
     "statusMessage": "Ticket Invalid",
     "exception": "class com.payments.exceptions.TicketLengthException",
     "message": "Ticket length is less then 40 characters"

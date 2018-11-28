@@ -1,6 +1,6 @@
 {
   "error": {
-    "statusCode": "406 NOT_ACCEPTABLE",
+    "statusCode": "406",
     "statusMessage": "Bad Request",
     "exception": "class com.payments.exceptions.CardNumberException",
     "message": "Card number is invalid, please check this"

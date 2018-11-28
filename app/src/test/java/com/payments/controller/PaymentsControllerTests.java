@@ -49,7 +49,7 @@ public class PaymentsControllerTests extends PaymentsApiApplicationTests {
         this.mockMvc
                 .perform(MockMvcRequestBuilders.post("/api/v1/payments")
                         .contentType(MediaType.APPLICATION_JSON).content(request))
-                .andExpect(content().json(response)).andExpect(status().isCreated());
+                .andExpect(content().json(response)).andExpect(status().isOk());
     }
 
     @Test
@@ -105,7 +105,7 @@ public class PaymentsControllerTests extends PaymentsApiApplicationTests {
         this.mockMvc
                 .perform(MockMvcRequestBuilders.post("/api/v1/payments")
                         .contentType(MediaType.APPLICATION_JSON).content(request))
-                .andExpect(content().json(response)).andExpect(status().isCreated());
+                .andExpect(content().json(response)).andExpect(status().isOk());
     }
 
     @Test
@@ -132,7 +132,7 @@ public class PaymentsControllerTests extends PaymentsApiApplicationTests {
         final String response =IOUtils.toString(inputResponse, "UTF-8");
 
         this.mockMvc
-                .perform(MockMvcRequestBuilders.get("/api/v1/payments/1/status")
+                .perform(MockMvcRequestBuilders.get("/api/v1/payments/5/status")
                         .contentType(MediaType.APPLICATION_JSON))
                         .andExpect(content().json(response)).andExpect(status().isOk());
     }

@@ -1,7 +1,7 @@
 {
-  "paymentStatus": {
-    "id": "123456",
+  "creditCardResponse": {
     "status": "Processing",
-    "name": "Felipe Simone"
+    "creditCard": "4024007163349300",
+    "code": 5
   }
 }
